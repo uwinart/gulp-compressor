@@ -18,7 +18,8 @@ module.exports = function (options) {
         if (file.isDirectory()) {
             return callback();
         }
-        var ext = path.extname(file).slice(1).toLowerCase();
+        var ext = path.extname(file.relative).slice(1).toLowerCase();
+        ext = ext === 'tpl' ? 'html' : ext;
         var opt = clone(options);
         if (ext) {
             opt.type = ext;
